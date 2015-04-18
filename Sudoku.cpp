@@ -3,6 +3,7 @@
 #include<cstdlib>
 #include"Sudoku.h"
 using namespace std;
+
 void Sudoku::GiveQuestion(){
 	srand((unsigned)time(NULL));
 	int a,b;

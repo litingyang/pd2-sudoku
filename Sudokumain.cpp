@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
 	Sudoku  su;
-//	su.GiveQuestion();
+	su.GiveQuestion();
 	su.ReadIn();
 	su.Solve();
 return 0;
