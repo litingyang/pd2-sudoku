@@ -7,8 +7,20 @@ using namespace std;
 void Sudoku::GiveQuestion(){
 	srand((unsigned)time(NULL));
 	int a,b;
-	b=rand()%3;
-	int arr[3][144]={
+	b=rand()%4;
+	int arr[4][144]={0 ,2 ,6 ,0 ,0 ,0 ,0 ,5 ,0 ,-1 ,-1 ,-1,
+	0 ,0 ,0 ,9 ,0 ,0 ,6 ,0 ,4 ,-1 ,-1 ,-1,
+	9 ,0 ,0 ,0 ,2 ,4 ,0 ,0 ,3 ,-1 ,-1 ,-1,
+	-1 ,-1 ,-1 ,0 ,3 ,0 ,0 ,0 ,0 ,9 ,5 ,0,
+	-1 ,-1 ,-1 ,7 ,0 ,0 ,0 ,0 ,6 ,0 ,0 ,0,
+	-1 ,-1 ,-1 ,0 ,9 ,6 ,0 ,3 ,5 ,0 ,0 ,0,
+	0 ,0 ,7 ,2 ,0 ,8 ,-1 ,-1 ,-1 ,0 ,9 ,0,
+	2 ,0 ,0 ,0 ,0 ,0 ,-1 ,-1 ,-1 ,1 ,0 ,7,
+	6 ,0 ,5 ,0 ,1 ,0 ,-1 ,-1 ,-1 ,0 ,0 ,0,
+	0 ,1 ,0 ,-1 ,-1 ,-1 ,7 ,0 ,8 ,5 ,6 ,0,
+	7 ,4 ,0 ,-1 ,-1 ,-1 ,0 ,0 ,9 ,0 ,0 ,2,
+	0 ,0 ,0 ,-1 ,-1 ,-1 ,0 ,0 ,0 ,0 ,4 ,0,
+
 		4,2,6,8,7,3,9,5,1,-1,-1,-1,
 		0,0,3,9,5,0,6,0,4,-1,-1,-1,
 		9,0,1,6,2,4,8,0,0,-1,-1,-1,
@@ -128,6 +140,8 @@ int Sudoku::check(int (&array)[144],bool (&where)[144][9]){
 			check(array,where);
 		}
 	}
+	if(checkans1(array)==1&&checkans2(array)==1&&checkans3(array)==1)return 1;
+	else{
 	for(a=0;a<144;a++){
 		if(array[a]==0){
 			for(z=0;z<9;z++){
@@ -139,8 +153,8 @@ int Sudoku::check(int (&array)[144],bool (&where)[144][9]){
 			return 0;
 		}
 	}
-	if(checkans1(array)==1&&checkans2(array)==1&&checkans3(array)==1)return 1;
-	else return 0;}
+	}
+	return 0;}
 
 	int Sudoku::checkans1(int *array){
 		int nine[9];
