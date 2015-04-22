@@ -62,6 +62,7 @@ void Sudoku::GiveQuestion(){
 		0,1,2,-1,-1,-1,7,0,8,5,6,0,
 		7,4,8,-1,-1,-1,5,0,9,3,1,2,
 		0,6,0,-1,-1,-1,3,0,2,0,4,0};
+
 	for(a=0;a<144;a++)
 	{
 		cout<<arr[b][a];
@@ -157,7 +158,7 @@ int Sudoku::check(int (&array)[144],bool (&where)[144][9]){
 	}
 	return 0;}
 
-	int Sudoku::checkans1(int *array){
+	int Sudoku::checkans1(int (&array)[144]){
 		int nine[9];
 		int x,n,y,z;				
 		for(x=0;x<12;x++)
@@ -177,7 +178,7 @@ int Sudoku::check(int (&array)[144],bool (&where)[144][9]){
 			}
 		}
 		return 1	;}
-		int Sudoku::checkans2(int *array){
+		int Sudoku::checkans2(int (&array)[144]){
 			int nine[9];
 			int x,n,y,z;				
 			for(x=0;x<12;x++)
@@ -197,16 +198,15 @@ int Sudoku::check(int (&array)[144],bool (&where)[144][9]){
 				}
 			}
 			return 1;	}
-			int Sudoku::checkans3(int *array){
+			int Sudoku::checkans3(int (&array)[144]){
 				int nine[9];
-				int x,n,y,z,u,v,s;				
+				int x,n,y,z,u,v;				
 				for(x=0;x<4;x++)
 				{
 					for(v=0;v<4;v++){
 						for(n=0;n<9;n++){
 							nine[n]=0;
 						}
-						s=0;
 						for(u=0;u<3;u++){
 							for(y=0;y<3;y++){
 								for(z=0;z<9;z++){
