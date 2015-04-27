@@ -130,7 +130,7 @@ void Sudoku::Solve(){
 
 	int Sudoku::check(int (&array)[144],bool (&where)[144][9]){
 
-		int z,a,x,w,u,v,tmp[144];
+		int z,a,x,w,u,v;
 		for(a=0;a<144;a++)
 		{if(array[a]==0&&(where[a][0]+where[a][1]+where[a][2]+where[a][3]+where[a][4]+where[a][5]+where[a][6]+where[a][7]+where[a][8])==8){
 																			  for(z=0;z<9;z++){
@@ -156,7 +156,7 @@ void Sudoku::Solve(){
 				check(array,where);
 			}
 		}
-		if(checkans1(array)==1&&checkans2(array)==1&&checkans3(array)==1)return 1;
+		if(checkans1(array)==1)return 1;
 		else{
 			for(a=0;a<144;a++){
 				if(array[a]==0){
@@ -172,9 +172,9 @@ void Sudoku::Solve(){
 		}
 		return 0;}
 
-		int Sudoku::checkans1(int (&array)[144]){
+		bool Sudoku::checkans1(int (&array)[144]){
 			int nine[9];
-			int x,n,y,z;				
+			int x,n,y,z,u,v;				
 			for(x=0;x<12;x++)
 			{
 				for(n=0;n<9;n++){
@@ -191,10 +191,6 @@ void Sudoku::Solve(){
 						return 0;
 				}
 			}
-			return 1	;}
-			int Sudoku::checkans2(int (&array)[144]){
-				int nine[9];
-				int x,n,y,z;				
 				for(x=0;x<12;x++)
 				{
 					for(n=0;n<9;n++){
@@ -211,10 +207,6 @@ void Sudoku::Solve(){
 							return 0;
 					}
 				}
-				return 1;	}
-				int Sudoku::checkans3(int (&array)[144]){
-					int nine[9];
-					int x,n,y,z,u,v;				
 					for(x=0;x<4;x++)
 					{
 						for(v=0;v<4;v++){
@@ -225,9 +217,9 @@ void Sudoku::Solve(){
 								for(y=0;y<3;y++){
 									for(z=0;z<9;z++){
 
-										if(array[x*36+v*3+12*u+y]!=-1&&array[x*36+v*3+12*u+y]==z+1)
+										if(array[x*36+v*3+12*u+y]==z+1)
 											nine[z]= nine[z]+1;
-										if(array[x*36+v*3]==-1){
+										if(array[x*36+v*3+12*u+y]==-1){
 											nine[z]=1;
 											if(array[x*36+v*3+12*0+1]!=-1||array[x*36+v*3+12*0+2]!=-1||array[x*36+v*3+12*1+0]!=-1||array[x*36+v*3+12*1+1]!=-1||array[x*36+v*3+12*1+2]!=-1||array[x*36+v*3+12*2+0]!=-1||array[x*36+v*3+12*2+1]!=-1||array[x*36+v*3+12*2+2]!=-1)
 												return 0;

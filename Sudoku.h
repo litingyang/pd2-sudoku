@@ -8,9 +8,7 @@ class Sudoku
 		void ReadIn();
 		void Solve();
 		int check(int(&)[144] ,bool(&) [144][9]);
-		int checkans1(int (&)[144]);
-		int checkans2(int (&)[144]);
-		int checkans3(int (&)[144]);
+		bool checkans1(int (&)[144]);
 	private:int array[144];
 };
 #endif
